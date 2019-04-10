@@ -1,0 +1,6 @@
+[submodule "3rd_party/cppcodec"]
+	path = 3rd_party/cppcodec
+	url = https://github.com/tplgy/cppcodec
+[submodule "3rd_party/GmSSL"]
+	path = 3rd_party/GmSSL
+	url = https://github.com/guanzhi/GmSSL
