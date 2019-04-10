@@ -9,5 +9,5 @@ RUN curl -o /etc/yum.repos.d/fedora.repo http://mirrors.aliyun.com/repo/fedora.r
   dnf install git -y &&\
   mkdir /cpp
 RUN cd /cpp &&\
-  git clone https://github.com/openssl/openssl.git
-RUN cd /cpp/openssl && git checkout OpenSSL_1_1_1b && ./config --prefix=/usr/local/ssl && make && make install 
+  git clone https://github.com/guanzhi/GmSSL.git 
+RUN cd /cpp/GmSSL && ./config --prefix=/usr/local/gmssl && make && make install 
