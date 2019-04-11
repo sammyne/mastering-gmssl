@@ -13,8 +13,9 @@ INCLUDE_DIRECTORIES(
 
 LINK_DIRECTORIES(${SSL}/lib)
 
+#${PROJECT_SOURCE_DIR}/crypto 
 SET(MODULES 
-  ${PROJECT_SOURCE_DIR}/crypto 
+  ${PROJECT_SOURCE_DIR}/ssl 
 )
 
 FOREACH( m ${MODULES} )
@@ -28,7 +29,7 @@ FOREACH( m ${MODULES} )
     GET_FILENAME_COMPONENT( submoduleName ${sub} NAME )
     #MESSAGE( "--- ${submoduleName}")
 
-    FILE(GLOB sources ${sub}/*)  
+    FILE(GLOB sources ${sub}/*.cpp)  
     FOREACH( src ${sources} )
 
       GET_FILENAME_COMPONENT( out ${src} NAME_WE )
@@ -36,7 +37,7 @@ FOREACH( m ${MODULES} )
       #MESSAGE(${out})
 
       ADD_EXECUTABLE( ${out} ${src} )
-      TARGET_LINK_LIBRARIES(${out} crypto)
+      TARGET_LINK_LIBRARIES(${out} crypto ssl)
     ENDFOREACH( src )
 
   ENDFOREACH( sub )
