@@ -96,6 +96,7 @@ void showCert(const SSL *ssl)
 int main(int argc, char *strings[])
 {
   const string HOST = "localhost";
+  //const string HOST = "10.18.11.1";
   const int PORT = 8081;
 
   SSL_library_init();
