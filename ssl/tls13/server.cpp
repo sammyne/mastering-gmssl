@@ -58,7 +58,8 @@ SSL_CTX *newCtx()
     abort();
   }
 
-  if (!SSL_CTX_set_cipher_list(ctx, GMTLS_TXT_ECDHE_SM2_WITH_SMS4_SM3))
+  //if (!SSL_CTX_set_cipher_list(ctx, GMTLS_TXT_ECDHE_SM2_WITH_SMS4_SM3))
+  if (!SSL_CTX_set_cipher_list(ctx, GMTLS_TXT_SM2DHE_WITH_SMS4_SM3))
   {
     ERR_print_errors_fp(stderr);
     abort();
