@@ -48,3 +48,6 @@ build/
 
 # VS Code
 .vscode/
+
+# 3rd_party
+3rd_party/

@@ -2,44 +2,15 @@ cmake_minimum_required(VERSION 3.12)
 
 PROJECT (gmssl-hello-world)
 
-SET(SSL /usr/local/gmssl)
-SET(CODEC ${PROJECT_SOURCE_DIR}/3rd_party/cppcodec)
+# 3rd_party dependencies
+include(gmssl.cmake)
+include(cppcodec.cmake)
 
-INCLUDE_DIRECTORIES(
-  ${CODEC}
-  ${SSL}/include
-  ${PROJECT_SOURCE_DIR}/include
+include_directories(
+  ${CPPCODEC_PREFIX}/include
+  ${GMSSL_PREFIX}/include
 )
 
-LINK_DIRECTORIES(${SSL}/lib)
+link_directories(${GMSSL_PREFIX}/lib)
 
-#${PROJECT_SOURCE_DIR}/ssl 
-SET(MODULES 
-  ${PROJECT_SOURCE_DIR}/crypto 
-)
-
-FOREACH( m ${MODULES} )
-  GET_FILENAME_COMPONENT( moduleName ${m} NAME )
-  #MESSAGE( "* ${moduleName}" )
-
-  FILE(GLOB submodules ${m}/*)  
-  FOREACH( sub ${submodules} )
-    #MESSAGE( "-- ${sub}")
-
-    GET_FILENAME_COMPONENT( submoduleName ${sub} NAME )
-    #MESSAGE( "--- ${submoduleName}")
-
-    FILE(GLOB sources ${sub}/*.cpp)  
-    FOREACH( src ${sources} )
-
-      GET_FILENAME_COMPONENT( out ${src} NAME_WE )
-      SET(out ${moduleName}_${submoduleName}_${out})
-      #MESSAGE(${out})
-
-      ADD_EXECUTABLE( ${out} ${src} )
-      TARGET_LINK_LIBRARIES(${out} crypto ssl)
-    ENDFOREACH( src )
-
-  ENDFOREACH( sub )
-
-ENDFOREACH( m )
+add_subdirectory(ssl)
