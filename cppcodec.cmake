@@ -1,7 +1,7 @@
 include(ExternalProject)
 
 # cppcodec
-SET(CPPCODEC_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/3rd_party/cppcodec)
+SET(CPPCODEC_PREFIX ${CMAKE_SOURCE_DIR}/3rd_party/cppcodec)
 
 ExternalProject_Add(cppcodec 
   GIT_PROGRESS 1 

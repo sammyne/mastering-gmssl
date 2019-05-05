@@ -1,10 +1,10 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.12)
 
-PROJECT(ssl)
+PROJECT(crypto)
 
-SET(MODULES tls13)
+SET(MODULES sm2)
 
 FOREACH(m ${MODULES})
   ADD_SUBDIRECTORY(${m})
-  MESSAGE("ssl> add ${m}")
+  MESSAGE("crypto> add ${m}")
 ENDFOREACH(m)
